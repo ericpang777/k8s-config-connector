@@ -22,6 +22,9 @@ import (
 
 var SecureSourceManagerInstanceGVK = GroupVersion.WithKind("SecureSourceManagerInstance")
 
+// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
+// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
+
 // SecureSourceManagerInstanceSpec defines the desired state of SecureSourceManagerInstance
 // +kcc:proto=google.cloud.securesourcemanager.v1.Instance
 type SecureSourceManagerInstanceSpec struct {
@@ -31,18 +34,10 @@ type SecureSourceManagerInstanceSpec struct {
 	/* Immutable. Location of the instance. */
 	Location string `json:"location"`
 
-	/* Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default. */
-	// +optional
+	// +kubebuilder:validation:XValidation:rule="self == oldSelf",message="ResourceID field is immutable"
+	// Immutable.
+	// The SecureSourceManagerInstance name. If not given, the metadata.name will be used.
 	ResourceID *string `json:"resourceID,omitempty"`
-
-	/* NOTYET
-	// Optional. Labels as key value pairs.
-	Labels map[string]string `json:"labels,omitempty"`
-	*/
-
-	// Optional. Immutable. Customer-managed encryption key name, in the format
-	//  projects/*/locations/*/keyRings/*/cryptoKeys/*.
-	KmsKey *string `json:"kmsKey,omitempty"`
 }
 
 // SecureSourceManagerInstanceStatus defines the config connector machine state of SecureSourceManagerInstance
@@ -52,43 +47,27 @@ type SecureSourceManagerInstanceStatus struct {
 	Conditions []v1alpha1.Condition `json:"conditions,omitempty"`
 
 	// ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
-	// +optional
 	ObservedGeneration *int64 `json:"observedGeneration,omitempty"`
 
 	// A unique specifier for the SecureSourceManagerInstance resource in GCP.
-	// +optional
 	ExternalRef *string `json:"externalRef,omitempty"`
 
 	// ObservedState is the state of the resource as most recently observed in GCP.
-	// +optional
 	ObservedState *SecureSourceManagerInstanceObservedState `json:"observedState,omitempty"`
 }
 
-// SecureSourceManagerInstanceSpec defines the desired state of SecureSourceManagerInstance
-// +kcc:proto=google.cloud.securesourcemanager.v1.Instance
+// SecureSourceManagerInstanceObservedState is the state of the SecureSourceManagerInstance resource as most recently observed in GCP.
 type SecureSourceManagerInstanceObservedState struct {
-	// // Output only. Create timestamp.
-	// CreateTime *string `json:"createTime,omitempty"`
-
-	// // Output only. Update timestamp.
-	// UpdateTime *string `json:"updateTime,omitempty"`
-
 	// Output only. Current state of the instance.
 	State *string `json:"state,omitempty"`
-
-	// Output only. An optional field providing information about the current
-	//  instance state.
-	StateNote *string `json:"stateNote,omitempty"`
-
-	// Output only. A list of hostnames for this instance.
-	HostConfig *Instance_HostConfig `json:"hostConfig,omitempty"`
 }
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// TODO(user): make sure the pluralizaiton below is correct
 // +kubebuilder:resource:categories=gcp,shortName=gcpsecuresourcemanagerinstance;gcpsecuresourcemanagerinstances
 // +kubebuilder:subresource:status
-// +kubebuilder:metadata:labels="cnrm.cloud.google.com/managed-by-kcc=true";"cnrm.cloud.google.com/stability-level=alpha";"cnrm.cloud.google.com/system=true"
+// +kubebuilder:metadata:labels="cnrm.cloud.google.com/managed-by-kcc=true";"cnrm.cloud.google.com/system=true"
 // +kubebuilder:printcolumn:name="Age",JSONPath=".metadata.creationTimestamp",type="date"
 // +kubebuilder:printcolumn:name="Ready",JSONPath=".status.conditions[?(@.type=='Ready')].status",type="string",description="When 'True', the most recent reconcile of the resource succeeded"
 // +kubebuilder:printcolumn:name="Status",JSONPath=".status.conditions[?(@.type=='Ready')].reason",type="string",description="The reason for the value in 'Ready'"
@@ -100,6 +79,7 @@ type SecureSourceManagerInstance struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
+	// +required
 	Spec   SecureSourceManagerInstanceSpec   `json:"spec,omitempty"`
 	Status SecureSourceManagerInstanceStatus `json:"status,omitempty"`
 }
