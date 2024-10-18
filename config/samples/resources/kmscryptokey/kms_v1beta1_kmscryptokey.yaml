@@ -20,7 +20,7 @@ metadata:
   name: kmscryptokey-sample
 spec:
   keyRingRef:
-    name: kmscryptokey-dep
+    name: kmskeyring-sample1
   purpose: ASYMMETRIC_SIGN
   versionTemplate:
     algorithm: EC_SIGN_P384_SHA384
