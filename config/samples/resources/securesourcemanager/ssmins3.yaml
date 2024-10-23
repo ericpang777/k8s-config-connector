@@ -12,17 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: kms.cnrm.cloud.google.com/v1beta1
-kind: KMSCryptoKey
+apiVersion: securesourcemanager.cnrm.cloud.google.com/v1alpha1
+kind: SecureSourceManagerInstance
 metadata:
-  labels:
-    key-one: value-one
-  name: kmscryptokey-sample
+  name: ssminstance-kcc-kms3
+  annotations:
+    cnrm.cloud.google.com/project-id: epang-test
 spec:
-  keyRingRef:
-    name: kmskeyring-sample1
-  purpose: ASYMMETRIC_SIGN
-  versionTemplate:
-    algorithm: EC_SIGN_P384_SHA384
-    protectionLevel: SOFTWARE
-  importOnly: false
+  location: asia-east1
+  projectRef:
+    external: epang-test
+  kmsKeyRef:
+    external: projects/epang-test/locations/asia-east1/keyRings/kmskeyring-sample1/cryptoKeys/key2

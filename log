@@ -1,0 +1,6 @@
+# github.com/GoogleCloudPlatform/k8s-config-connector/apis/securesourcemanager/v1alpha1
+apis/securesourcemanager/v1alpha1/zz_generated.deepcopy.go:70:8: in.CaPool undefined (type *Instance_PrivateConfig has no field or method CaPool)
+apis/securesourcemanager/v1alpha1/zz_generated.deepcopy.go:71:18: in.CaPool undefined (type *Instance_PrivateConfig has no field or method CaPool)
+apis/securesourcemanager/v1alpha1/zz_generated.deepcopy.go:71:31: out.CaPool undefined (type *Instance_PrivateConfig has no field or method CaPool)
+FAIL	github.com/GoogleCloudPlatform/k8s-config-connector/tests/e2e [build failed]
+FAIL

@@ -43,6 +43,29 @@ type SecureSourceManagerInstanceSpec struct {
 
 	// Optional. Immutable. Customer-managed encryption key name.
 	KmsKeyRef *refs.KMSCryptoKeyRef `json:"kmsKeyRef,omitempty"`
+
+	// Optional. Settings for private instance.
+	PrivateConfig *Instance_PrivateConfig `json:"privateConfig,omitempty"`
+}
+
+// +kcc:proto=google.cloud.securesourcemanager.v1.Instance.PrivateConfig
+type Instance_PrivateConfig struct {
+	// Immutable. Indicate if it's private instance.
+	// +required
+	IsPrivate *bool `json:"isPrivate,omitempty"`
+
+	// Immutable. CA pool resource, resource must in the format of
+	//  `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+	// +required
+	CaPoolRef *refs.PrivateCACAPoolRef `json:"caPoolRef,omitempty"`
+
+	// Output only. Service Attachment for HTTP, resource is in the format of
+	//  `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+	HTTPServiceAttachment *string `json:"httpServiceAttachment,omitempty"`
+
+	// Output only. Service Attachment for SSH, resource is in the format of
+	//  `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+	SSHServiceAttachment *string `json:"sshServiceAttachment,omitempty"`
 }
 
 // SecureSourceManagerInstanceStatus defines the config connector machine state of SecureSourceManagerInstance
