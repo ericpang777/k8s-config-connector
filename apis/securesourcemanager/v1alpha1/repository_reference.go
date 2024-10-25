@@ -177,11 +177,3 @@ func parseSecureSourceManagerRepositoryExternal(external string) (parent *Secure
 	resourceID = tokens[5]
 	return parent, resourceID, nil
 }
-
-func valueOf[T any](t *T) T {
-	var zeroVal T
-	if t == nil {
-		return zeroVal
-	}
-	return *t
-}

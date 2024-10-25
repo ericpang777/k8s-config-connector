@@ -150,7 +150,7 @@ func (a *SecureSourceManagerRepositoryAdapter) Create(ctx context.Context, creat
 	log.V(2).Info("successfully created Repository", "name", a.id.External)
 
 	status := &krm.SecureSourceManagerRepositoryStatus{}
-	status.ObservedState = SecureSourceManagerRepositoryStatusObservedState_FromProto(mapCtx, created)
+	status.ObservedState = SecureSourceManagerRepositoryObservedState_FromProto(mapCtx, created)
 	if mapCtx.Err() != nil {
 		return mapCtx.Err()
 	}

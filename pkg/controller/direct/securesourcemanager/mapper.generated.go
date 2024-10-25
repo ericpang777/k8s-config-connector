@@ -15,12 +15,12 @@
 package securesourcemanager
 
 import (
-	krm "/usr/local/google/home/epang/go/src/github.com/ericpang777/k8s-config-connector/apis/securesourcemanager/v1alpha1"
-
 	pb "cloud.google.com/go/securesourcemanager/apiv1/securesourcemanagerpb"
 	refs "github.com/GoogleCloudPlatform/k8s-config-connector/apis/refs/v1beta1"
+	krm "github.com/GoogleCloudPlatform/k8s-config-connector/apis/securesourcemanager/v1alpha1"
 	"github.com/GoogleCloudPlatform/k8s-config-connector/pkg/controller/direct"
 )
+
 func Instance_HostConfig_FromProto(mapCtx *direct.MapContext, in *pb.Instance_HostConfig) *krm.Instance_HostConfig {
 	if in == nil {
 		return nil
@@ -207,7 +207,7 @@ func SecureSourceManagerRepositorySpec_FromProto(mapCtx *direct.MapContext, in *
 	// MISSING: Name
 	// MISSING: Description
 	if in.GetInstance() != "" {
-		out.InstanceRef = &refs.*SecureSourceManagerInstanceRef{External: in.GetInstance()}
+		out.InstanceRef = &krm.SecureSourceManagerInstanceRef{External: in.GetInstance()}
 	}
 	// MISSING: Uid
 	// MISSING: CreateTime
