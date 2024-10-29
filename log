@@ -1,0 +1,248 @@
+=== RUN   TestAllInSeries
+=== RUN   TestAllInSeries/fixtures
+=== RUN   TestAllInSeries/fixtures/securesourcemanagerinstancebasic
+    harness.go:168: starting envtest apiserver
+    harness.go:275: creating mock gcp
+I1018 17:20:28.438350 1589054 mock_http_roundtrip.go:432] mockgcp request: POST https://cloudresourcemanager.googleapis.com/v1/projects?alt=json&prettyPrint=false
+I1018 17:20:28.447803 1589054 mock_http_roundtrip.go:432] mockgcp request: POST https://compute.googleapis.com/compute/v1/projects/mock-project/global/networks
+I1018 17:20:28.458331 1589054 operations.go:119] "storing operation" fqn="projects/mock-project/global/operations/operation-1729272028458-98242f6c-34c2-42f5-a84b-d88d5c539240"
+W1018 17:20:28.458746 1589054 operations.go:146] TODO: handle LRO result creation_timestamp:"2024-10-18T17:20:28.458Z" description:"Default network for the project" id:1729272028458236090 kind:"compute#network" name:"default" self_link:"https://www.googleapis.com/compute/v1/projects/mock-project/global/networks/default" self_link_with_id:"https://www.googleapis.com/compute/v1/projects/mock-project/global/networks/1729272028458236090"
+I1018 17:20:28.459508 1589054 mock_http_roundtrip.go:432] mockgcp request: GET https://compute.googleapis.com/compute/v1/projects/mock-project/global/operations/operation-1729272028458-98242f6c-34c2-42f5-a84b-d88d5c539240
+I1018 17:20:28.540814 1589054 mock_http_roundtrip.go:432] mockgcp request: GET https://cloudresourcemanager.googleapis.com/v1/operations/operation-1729272028439-28d2784a-8434-483e-96c4-361f079bbaf7?alt=json&prettyPrint=false
+I1018 17:20:28.541125 1589054 mock_http_roundtrip.go:432] mockgcp request: GET https://cloudresourcemanager.googleapis.com/v1/projects/mock-project?alt=json&prettyPrint=false
+{"severity":"info","timestamp":"2024-10-18T17:20:28.541Z","msg":"env var ARTIFACTS is not set; will not record http log"}
+2024/10/18 17:20:28 [INFO] Authenticating using configured Google JSON 'access_token'...
+2024/10/18 17:20:28 [INFO]   -- Scopes: [https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/drive.readonly]
+2024/10/18 17:20:28 [INFO] Authenticating using configured Google JSON 'access_token'...
+2024/10/18 17:20:28 [INFO]   -- Scopes: [https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/drive.readonly]
+2024/10/18 17:20:28 [DEBUG] Waiting for state to become: [success]
+I1018 17:20:28.556230 1589054 mock_http_roundtrip.go:432] mockgcp request: GET https://openidconnect.googleapis.com/v1/userinfo?alt=json
+2024/10/18 17:20:28 response: 200 {"email":"test@example.com"}
+2024/10/18 17:20:28 [INFO] Terraform is using this identity: test@example.com
+{"severity":"info","timestamp":"2024-10-18T17:20:28.905Z","logger":"controller-runtime.webhook","msg":"Registering webhook","path":"/deny-unknown-fields"}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.905Z","logger":"controller-runtime.webhook","msg":"Registering webhook","path":"/iam-validation"}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.905Z","logger":"controller-runtime.webhook","msg":"Registering webhook","path":"/iam-defaulter"}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.905Z","logger":"controller-runtime.webhook","msg":"Registering webhook","path":"/container-annotation-handler"}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.920Z","logger":"controller-runtime.webhook","msg":"Registering webhook","path":"/management-conflict-annotation-defaulter"}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.920Z","logger":"controller-runtime.webhook","msg":"Registering webhook","path":"/generic-defaulter"}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.920Z","logger":"controller-runtime.webhook","msg":"Registering webhook","path":"/resource-validation"}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.920Z","logger":"controller-runtime.webhook","msg":"Registering webhook","path":"/state-into-spec-validation"}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.920Z","logger":"controller-runtime.webhook.webhooks","msg":"Starting webhook server"}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.921Z","logger":"controller-runtime.certwatcher","msg":"Updated current TLS certificate"}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.921Z","logger":"controller-runtime.webhook","msg":"Serving webhook server","host":"127.0.0.1","port":44397}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.921Z","logger":"controller-runtime.certwatcher","msg":"Starting certificate watcher"}
+
+obj: &{map[apiVersion:securesourcemanager.cnrm.cloud.google.com/v1alpha1 kind:SecureSourceManagerInstance metadata:map[labels:map[cnrm-test:true] name:ssminstance-v3jy3r53rt7nscq namespace:v3jy3r53rt7nscq] spec:map[location:us-central1 projectRef:map[external:mock-project]]]}create opts: []
+{"severity":"info","timestamp":"2024-10-18T17:20:28.971Z","msg":"processing request","operation":"CREATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.971Z","msg":"processing request","operation":"CREATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:28.972Z","msg":"done processing request","operation":"CREATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:29.372Z","msg":"done processing request","operation":"CREATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:29.381Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:29.449Z","logger":"registration-controller","msg":"registering the GSA-Key-to-Secret generation controller"}
+{"severity":"info","timestamp":"2024-10-18T17:20:29.449Z","logger":"gsakeysecretgenerator","msg":"added a controller for service-account-key-to-secret"}
+{"severity":"error","timestamp":"2024-10-18T17:20:29.520Z","logger":"registration-controller","msg":"skipping controller registration","group":"bigqueryanalyticshub.cnrm.cloud.google.com","version":"v1alpha1","kind":"BigQueryAnalyticsHubListing","error":"unrecognized CRD: BigQueryAnalyticsHubListing"}
+{"severity":"info","timestamp":"2024-10-18T17:20:30.385Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:31.384Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:32.384Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:33.385Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:34.385Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:35.388Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:36.384Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:37.384Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:38.384Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:39.384Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+I1018 17:20:39.979712 1589054 trace.go:236] Trace[25883446]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.965) (total time: 10014ms):
+Trace[25883446]: ---"Objects listed" error:<nil> 10014ms (17:20:39.979)
+Trace[25883446]: [10.014570159s] [10.014570159s] END
+I1018 17:20:40.011151 1589054 trace.go:236] Trace[610087168]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.965) (total time: 10045ms):
+Trace[610087168]: ---"Objects listed" error:<nil> 10045ms (17:20:40.011)
+Trace[610087168]: [10.04585254s] [10.04585254s] END
+I1018 17:20:40.043105 1589054 trace.go:236] Trace[208105719]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.965) (total time: 10077ms):
+Trace[208105719]: ---"Objects listed" error:<nil> 10077ms (17:20:40.043)
+Trace[208105719]: [10.077656384s] [10.077656384s] END
+I1018 17:20:40.086033 1589054 trace.go:236] Trace[983298549]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.965) (total time: 10120ms):
+Trace[983298549]: ---"Objects listed" error:<nil> 10120ms (17:20:40.085)
+Trace[983298549]: [10.120437958s] [10.120437958s] END
+I1018 17:20:40.116812 1589054 trace.go:236] Trace[121886669]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.971) (total time: 10145ms):
+Trace[121886669]: ---"Objects listed" error:<nil> 10145ms (17:20:40.116)
+Trace[121886669]: [10.145208456s] [10.145208456s] END
+I1018 17:20:40.146703 1589054 trace.go:236] Trace[929714429]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.975) (total time: 10171ms):
+Trace[929714429]: ---"Objects listed" error:<nil> 10171ms (17:20:40.146)
+Trace[929714429]: [10.171233086s] [10.171233086s] END
+I1018 17:20:40.173778 1589054 trace.go:236] Trace[1816764819]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.975) (total time: 10198ms):
+Trace[1816764819]: ---"Objects listed" error:<nil> 10198ms (17:20:40.173)
+Trace[1816764819]: [10.198129169s] [10.198129169s] END
+I1018 17:20:40.200395 1589054 trace.go:236] Trace[943839493]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.975) (total time: 10224ms):
+Trace[943839493]: ---"Objects listed" error:<nil> 10224ms (17:20:40.200)
+Trace[943839493]: [10.224949125s] [10.224949125s] END
+I1018 17:20:40.227680 1589054 trace.go:236] Trace[1604545592]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.975) (total time: 10252ms):
+Trace[1604545592]: ---"Objects listed" error:<nil> 10252ms (17:20:40.227)
+Trace[1604545592]: [10.252068401s] [10.252068401s] END
+I1018 17:20:40.274467 1589054 trace.go:236] Trace[1757382783]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.975) (total time: 10298ms):
+Trace[1757382783]: ---"Objects listed" error:<nil> 10298ms (17:20:40.274)
+Trace[1757382783]: [10.298696739s] [10.298696739s] END
+I1018 17:20:40.301229 1589054 trace.go:236] Trace[628387278]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.975) (total time: 10325ms):
+Trace[628387278]: ---"Objects listed" error:<nil> 10325ms (17:20:40.301)
+Trace[628387278]: [10.325305628s] [10.325305628s] END
+I1018 17:20:40.327951 1589054 trace.go:236] Trace[468428322]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.975) (total time: 10352ms):
+Trace[468428322]: ---"Objects listed" error:<nil> 10352ms (17:20:40.327)
+Trace[468428322]: [10.352053193s] [10.352053193s] END
+I1018 17:20:40.356943 1589054 trace.go:236] Trace[1445284385]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.981) (total time: 10374ms):
+Trace[1445284385]: ---"Objects listed" error:<nil> 10374ms (17:20:40.356)
+Trace[1445284385]: [10.374881975s] [10.374881975s] END
+{"severity":"info","timestamp":"2024-10-18T17:20:40.384Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+I1018 17:20:40.385866 1589054 trace.go:236] Trace[1741733447]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.982) (total time: 10403ms):
+Trace[1741733447]: ---"Objects listed" error:<nil> 10403ms (17:20:40.385)
+Trace[1741733447]: [10.403436624s] [10.403436624s] END
+I1018 17:20:40.413158 1589054 trace.go:236] Trace[1172213958]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.982) (total time: 10430ms):
+Trace[1172213958]: ---"Objects listed" error:<nil> 10430ms (17:20:40.413)
+Trace[1172213958]: [10.43028132s] [10.43028132s] END
+I1018 17:20:40.447828 1589054 trace.go:236] Trace[1524607617]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.983) (total time: 10464ms):
+Trace[1524607617]: ---"Objects listed" error:<nil> 10464ms (17:20:40.447)
+Trace[1524607617]: [10.464521219s] [10.464521219s] END
+I1018 17:20:40.479001 1589054 trace.go:236] Trace[1206851060]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.983) (total time: 10495ms):
+Trace[1206851060]: ---"Objects listed" error:<nil> 10495ms (17:20:40.478)
+Trace[1206851060]: [10.495368244s] [10.495368244s] END
+I1018 17:20:40.518200 1589054 trace.go:236] Trace[695100704]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.984) (total time: 10533ms):
+Trace[695100704]: ---"Objects listed" error:<nil> 10533ms (17:20:40.518)
+Trace[695100704]: [10.53399965s] [10.53399965s] END
+I1018 17:20:40.562072 1589054 trace.go:236] Trace[1184170177]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.984) (total time: 10577ms):
+Trace[1184170177]: ---"Objects listed" error:<nil> 10577ms (17:20:40.561)
+Trace[1184170177]: [10.577412418s] [10.577412418s] END
+I1018 17:20:40.603250 1589054 trace.go:236] Trace[977415162]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.985) (total time: 10618ms):
+Trace[977415162]: ---"Objects listed" error:<nil> 10618ms (17:20:40.603)
+Trace[977415162]: [10.618118771s] [10.618118771s] END
+I1018 17:20:40.643392 1589054 trace.go:236] Trace[861283325]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.992) (total time: 10650ms):
+Trace[861283325]: ---"Objects listed" error:<nil> 10650ms (17:20:40.643)
+Trace[861283325]: [10.650947625s] [10.650947625s] END
+I1018 17:20:40.708166 1589054 trace.go:236] Trace[631910976]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.999) (total time: 10708ms):
+Trace[631910976]: ---"Objects listed" error:<nil> 10708ms (17:20:40.708)
+Trace[631910976]: [10.70890666s] [10.70890666s] END
+I1018 17:20:40.774864 1589054 trace.go:236] Trace[223144858]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:29.999) (total time: 10775ms):
+Trace[223144858]: ---"Objects listed" error:<nil> 10775ms (17:20:40.774)
+Trace[223144858]: [10.775219197s] [10.775219197s] END
+I1018 17:20:40.828938 1589054 trace.go:236] Trace[1761547770]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.006) (total time: 10822ms):
+Trace[1761547770]: ---"Objects listed" error:<nil> 10822ms (17:20:40.828)
+Trace[1761547770]: [10.82218755s] [10.82218755s] END
+I1018 17:20:40.859502 1589054 trace.go:236] Trace[2142504998]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.006) (total time: 10852ms):
+Trace[2142504998]: ---"Objects listed" error:<nil> 10852ms (17:20:40.859)
+Trace[2142504998]: [10.852673188s] [10.852673188s] END
+I1018 17:20:40.893946 1589054 trace.go:236] Trace[1586121050]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.007) (total time: 10886ms):
+Trace[1586121050]: ---"Objects listed" error:<nil> 10886ms (17:20:40.893)
+Trace[1586121050]: [10.88683766s] [10.88683766s] END
+I1018 17:20:40.923401 1589054 trace.go:236] Trace[1018762018]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.007) (total time: 10916ms):
+Trace[1018762018]: ---"Objects listed" error:<nil> 10916ms (17:20:40.923)
+Trace[1018762018]: [10.916059575s] [10.916059575s] END
+I1018 17:20:40.950818 1589054 trace.go:236] Trace[107506089]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.006) (total time: 10943ms):
+Trace[107506089]: ---"Objects listed" error:<nil> 10943ms (17:20:40.950)
+Trace[107506089]: [10.943791056s] [10.943791056s] END
+I1018 17:20:40.980182 1589054 trace.go:236] Trace[886434762]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.007) (total time: 10972ms):
+Trace[886434762]: ---"Objects listed" error:<nil> 10972ms (17:20:40.980)
+Trace[886434762]: [10.972706719s] [10.972706719s] END
+I1018 17:20:41.011557 1589054 trace.go:236] Trace[944757773]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.007) (total time: 11004ms):
+Trace[944757773]: ---"Objects listed" error:<nil> 11004ms (17:20:41.011)
+Trace[944757773]: [11.004303089s] [11.004303089s] END
+I1018 17:20:41.047041 1589054 trace.go:236] Trace[9575742]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.007) (total time: 11039ms):
+Trace[9575742]: ---"Objects listed" error:<nil> 11039ms (17:20:41.046)
+Trace[9575742]: [11.039351357s] [11.039351357s] END
+I1018 17:20:41.075014 1589054 trace.go:236] Trace[986256713]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.007) (total time: 11066ms):
+Trace[986256713]: ---"Objects listed" error:<nil> 11066ms (17:20:41.074)
+Trace[986256713]: [11.066954178s] [11.066954178s] END
+I1018 17:20:41.104538 1589054 trace.go:236] Trace[532394990]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.007) (total time: 11096ms):
+Trace[532394990]: ---"Objects listed" error:<nil> 11096ms (17:20:41.104)
+Trace[532394990]: [11.096753015s] [11.096753015s] END
+I1018 17:20:41.132929 1589054 trace.go:236] Trace[14915839]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.007) (total time: 11125ms):
+Trace[14915839]: ---"Objects listed" error:<nil> 11125ms (17:20:41.132)
+Trace[14915839]: [11.125016645s] [11.125016645s] END
+I1018 17:20:41.161112 1589054 trace.go:236] Trace[350217657]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.008) (total time: 11152ms):
+Trace[350217657]: ---"Objects listed" error:<nil> 11152ms (17:20:41.161)
+Trace[350217657]: [11.152772698s] [11.152772698s] END
+I1018 17:20:41.193784 1589054 trace.go:236] Trace[1847706960]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.010) (total time: 11182ms):
+Trace[1847706960]: ---"Objects listed" error:<nil> 11182ms (17:20:41.193)
+Trace[1847706960]: [11.182727753s] [11.182727753s] END
+I1018 17:20:41.221599 1589054 trace.go:236] Trace[1426068935]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.011) (total time: 11210ms):
+Trace[1426068935]: ---"Objects listed" error:<nil> 11210ms (17:20:41.221)
+Trace[1426068935]: [11.210428132s] [11.210428132s] END
+I1018 17:20:41.259389 1589054 trace.go:236] Trace[905984321]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.011) (total time: 11247ms):
+Trace[905984321]: ---"Objects listed" error:<nil> 11247ms (17:20:41.259)
+Trace[905984321]: [11.247982795s] [11.247982795s] END
+I1018 17:20:41.327447 1589054 trace.go:236] Trace[1781427724]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.011) (total time: 11316ms):
+Trace[1781427724]: ---"Objects listed" error:<nil> 11316ms (17:20:41.327)
+Trace[1781427724]: [11.316215973s] [11.316215973s] END
+I1018 17:20:41.354916 1589054 trace.go:236] Trace[1259518933]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.011) (total time: 11343ms):
+Trace[1259518933]: ---"Objects listed" error:<nil> 11343ms (17:20:41.354)
+Trace[1259518933]: [11.343391327s] [11.343391327s] END
+{"severity":"info","timestamp":"2024-10-18T17:20:41.385Z","msg":"resource does not yet have status","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+I1018 17:20:41.390521 1589054 trace.go:236] Trace[1295433951]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.011) (total time: 11378ms):
+Trace[1295433951]: ---"Objects listed" error:<nil> 11378ms (17:20:41.390)
+Trace[1295433951]: [11.37890413s] [11.37890413s] END
+I1018 17:20:41.418984 1589054 trace.go:236] Trace[196768280]: "Reflector ListAndWatch" name:pkg/mod/k8s.io/client-go@v0.27.11/tools/cache/reflector.go:231 (18-Oct-2024 17:20:30.011) (total time: 11407ms):
+Trace[196768280]: ---"Objects listed" error:<nil> 11407ms (17:20:41.418)
+Trace[196768280]: [11.407248394s] [11.407248394s] END
+{"severity":"info","timestamp":"2024-10-18T17:20:41.512Z","msg":"Running reconcile","controller":"securesourcemanagerinstance-controller","controllerGroup":"securesourcemanager.cnrm.cloud.google.com","controllerKind":"SecureSourceManagerInstance","SecureSourceManagerInstance":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"namespace":"v3jy3r53rt7nscq","name":"ssminstance-v3jy3r53rt7nscq","reconcileID":"fefb7a85-0155-4972-9cae-ca0475a3db04","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+I1018 17:20:41.628665 1589054 kccstate.go:38] configconnector.core.cnrm.cloud.google.com object is not found
+I1018 17:20:41.629438 1589054 mock_http_roundtrip.go:432] mockgcp request: GET https://securesourcemanager.googleapis.com/v1/projects/mock-project/locations/us-central1/instances/ssminstance-v3jy3r53rt7nscq?%24alt=json%3Benum-encoding%3Dint
+I1018 17:20:41.629542 1589054 mux.go:137] found "$alt"="json;enum-encoding=int", will convert to Accept header
+{"severity":"info","timestamp":"2024-10-18T17:20:41.636Z","msg":"processing request","operation":"UPDATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:41.636Z","msg":"processing request","operation":"UPDATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:41.636Z","msg":"done processing request","operation":"UPDATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:41.636Z","msg":"done processing request","operation":"UPDATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+I1018 17:20:41.640060 1589054 mock_http_roundtrip.go:432] mockgcp request: POST https://securesourcemanager.googleapis.com/v1/projects/mock-project/locations/us-central1/instances?%24alt=json%3Benum-encoding%3Dint&instanceId=ssminstance-v3jy3r53rt7nscq
+I1018 17:20:41.640132 1589054 mux.go:137] found "$alt"="json;enum-encoding=int", will convert to Accept header
+I1018 17:20:41.641262 1589054 mock_http_roundtrip.go:432] mockgcp request: GET https://securesourcemanager.googleapis.com/v1/projects/mock-project/locations/us-central1/operations/operation-1729272041640-29365900-3f00-444a-9b08-1beacd78bcaa
+{"severity":"info","timestamp":"2024-10-18T17:20:41.650Z","msg":"processing request","operation":"UPDATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:41.650Z","msg":"processing request","operation":"UPDATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:41.650Z","msg":"done processing request","operation":"UPDATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:41.651Z","msg":"done processing request","operation":"UPDATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:41.660Z","msg":"successfully finished reconcile","controller":"securesourcemanagerinstance-controller","controllerGroup":"securesourcemanager.cnrm.cloud.google.com","controllerKind":"SecureSourceManagerInstance","SecureSourceManagerInstance":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"namespace":"v3jy3r53rt7nscq","name":"ssminstance-v3jy3r53rt7nscq","reconcileID":"fefb7a85-0155-4972-9cae-ca0475a3db04","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"time to next reconciliation":"13m10.895732088s"}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.385Z","msg":"resource is ready","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.386Z","msg":"Deleting resource","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.393Z","msg":"Running reconcile","controller":"securesourcemanagerinstance-controller","controllerGroup":"securesourcemanager.cnrm.cloud.google.com","controllerKind":"SecureSourceManagerInstance","SecureSourceManagerInstance":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"namespace":"v3jy3r53rt7nscq","name":"ssminstance-v3jy3r53rt7nscq","reconcileID":"68c69c2d-ff68-4e0f-a895-a1e2a6b1c728","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.396Z","logger":"securesourcemanagerinstance-deletion-defender-controller","msg":"starting deletion defender finalization","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+I1018 17:20:42.396705 1589054 kccstate.go:38] configconnector.core.cnrm.cloud.google.com object is not found
+I1018 17:20:42.396926 1589054 mock_http_roundtrip.go:432] mockgcp request: GET https://securesourcemanager.googleapis.com/v1/projects/mock-project/locations/us-central1/instances/ssminstance-v3jy3r53rt7nscq?%24alt=json%3Benum-encoding%3Dint
+I1018 17:20:42.396977 1589054 mux.go:137] found "$alt"="json;enum-encoding=int", will convert to Accept header
+{"severity":"info","timestamp":"2024-10-18T17:20:42.397Z","msg":"deletion defender has not yet finalized; requeuing","controller":"securesourcemanagerinstance-controller","controllerGroup":"securesourcemanager.cnrm.cloud.google.com","controllerKind":"SecureSourceManagerInstance","SecureSourceManagerInstance":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"namespace":"v3jy3r53rt7nscq","name":"ssminstance-v3jy3r53rt7nscq","reconcileID":"68c69c2d-ff68-4e0f-a895-a1e2a6b1c728","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.404Z","msg":"processing request","operation":"UPDATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.404Z","msg":"processing request","operation":"UPDATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.404Z","msg":"done processing request","operation":"UPDATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.404Z","msg":"done processing request","operation":"UPDATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.409Z","msg":"Running reconcile","controller":"securesourcemanagerinstance-controller","controllerGroup":"securesourcemanager.cnrm.cloud.google.com","controllerKind":"SecureSourceManagerInstance","SecureSourceManagerInstance":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"namespace":"v3jy3r53rt7nscq","name":"ssminstance-v3jy3r53rt7nscq","reconcileID":"c8a0a8a7-7d11-436b-90e1-b10106780ade","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.410Z","logger":"securesourcemanagerinstance-deletion-defender-controller","msg":"successfully finalized deletion defense","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+I1018 17:20:42.413067 1589054 kccstate.go:38] configconnector.core.cnrm.cloud.google.com object is not found
+I1018 17:20:42.413266 1589054 mock_http_roundtrip.go:432] mockgcp request: GET https://securesourcemanager.googleapis.com/v1/projects/mock-project/locations/us-central1/instances/ssminstance-v3jy3r53rt7nscq?%24alt=json%3Benum-encoding%3Dint
+I1018 17:20:42.413341 1589054 mux.go:137] found "$alt"="json;enum-encoding=int", will convert to Accept header
+I1018 17:20:42.414163 1589054 mock_http_roundtrip.go:432] mockgcp request: DELETE https://securesourcemanager.googleapis.com/v1/projects/mock-project/locations/us-central1/instances/ssminstance-v3jy3r53rt7nscq?%24alt=json%3Benum-encoding%3Dint
+I1018 17:20:42.414212 1589054 mux.go:137] found "$alt"="json;enum-encoding=int", will convert to Accept header
+I1018 17:20:42.414874 1589054 mock_http_roundtrip.go:432] mockgcp request: GET https://securesourcemanager.googleapis.com/v1/projects/mock-project/locations/us-central1/operations/operation-1729272042414-baf6b60b-7f0f-43bb-b802-c72765fb0d37
+W1018 17:20:42.414992 1589054 json.go:55] FindMessageByURL("type.googleapis.com/mockgcp.protobuf.Empty") failed: proto: not found
+{"severity":"info","timestamp":"2024-10-18T17:20:42.426Z","msg":"processing request","operation":"UPDATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.426Z","msg":"processing request","operation":"UPDATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.426Z","msg":"done processing request","operation":"UPDATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.426Z","msg":"done processing request","operation":"UPDATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.430Z","msg":"processing request","operation":"UPDATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.430Z","msg":"processing request","operation":"UPDATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.430Z","msg":"done processing request","operation":"UPDATE","handler":"unknown fields validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.430Z","msg":"done processing request","operation":"UPDATE","handler":"state-into-spec validation","kind":"SecureSourceManagerInstance","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"result-code":200,"result-reason":""}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.434Z","msg":"successfully finished reconcile","controller":"securesourcemanagerinstance-controller","controllerGroup":"securesourcemanager.cnrm.cloud.google.com","controllerKind":"SecureSourceManagerInstance","SecureSourceManagerInstance":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"namespace":"v3jy3r53rt7nscq","name":"ssminstance-v3jy3r53rt7nscq","reconcileID":"c8a0a8a7-7d11-436b-90e1-b10106780ade","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"},"time to next reconciliation":"14m21.247687261s"}
+{"severity":"info","timestamp":"2024-10-18T17:20:42.436Z","logger":"securesourcemanagerinstance-deletion-defender-controller","msg":"resource not found in API server; finishing reconcile","resource":{"name":"ssminstance-v3jy3r53rt7nscq","namespace":"v3jy3r53rt7nscq"}}
+{"severity":"info","timestamp":"2024-10-18T17:20:43.400Z","msg":"Done waiting for resource to delete","kind":"SecureSourceManagerInstance","name":"ssminstance-v3jy3r53rt7nscq"}
+2024/10/18 17:20:43 [DEBUG] parent context canceled, cleaning up batcher batches
+2024/10/18 17:20:43 [DEBUG] Stopping batcher "IAM"
+2024/10/18 17:20:43 [DEBUG] parent context canceled, cleaning up batcher batches
+2024/10/18 17:20:43 [DEBUG] Stopping batcher "Service Usage"
+{"severity":"info","timestamp":"2024-10-18T17:20:43.402Z","msg":"Stopping and waiting for non leader election runnables"}
+{"severity":"info","timestamp":"2024-10-18T17:20:43.402Z","msg":"Stopping and waiting for leader election runnables"}
+{"severity":"info","timestamp":"2024-10-18T17:20:43.402Z","logger":"controller-runtime.webhook","msg":"Shutting down webhook server with timeout of 1 minute"}
+    harness.go:555: waiting for controller-runtime manager shutdown
+{"severity":"info","timestamp":"2024-10-18T17:20:43.407Z","msg":"Stopping and waiting for caches"}
+{"severity":"info","timestamp":"2024-10-18T17:20:43.407Z","msg":"Stopping and waiting for webhooks"}
+{"severity":"info","timestamp":"2024-10-18T17:20:43.407Z","msg":"Wait completed, proceeding to shutdown the manager"}
+    harness.go:557: controller-runtime manager is shutdown
+=== NAME  TestAllInSeries
+    unified_test.go:116: shutting down manager
+--- PASS: TestAllInSeries (30.15s)
+    --- PASS: TestAllInSeries/fixtures (30.15s)
+        --- PASS: TestAllInSeries/fixtures/securesourcemanagerinstancebasic (29.19s)
+PASS
+ok  	github.com/GoogleCloudPlatform/k8s-config-connector/tests/e2e	31.787s
