@@ -130,14 +130,19 @@ func (a *SecureSourceManagerRepositoryAdapter) Create(ctx context.Context, creat
 		return mapCtx.Err()
 	}
 
-	// TODO(user): Complete the gcp "CREATE" or "INSERT" request with required fields.
 	parent, err := a.id.Parent()
 	if err != nil {
 		return err
 	}
+	repositoryID, err := a.id.ResourceID()
+	if err != nil {
+		return err
+	}
+
 	req := &securesourcemanagerpb.CreateRepositoryRequest{
-		Parent:     parent.String(),
-		Repository: resource,
+		Parent:       parent.String(),
+		Repository:   resource,
+		RepositoryId: repositoryID,
 	}
 	op, err := a.gcpClient.CreateRepository(ctx, req)
 	if err != nil {
