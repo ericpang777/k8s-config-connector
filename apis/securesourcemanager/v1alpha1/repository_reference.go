@@ -151,6 +151,18 @@ func (r *SecureSourceManagerRepositoryRef) Parent() (*SecureSourceManagerReposit
 	return nil, fmt.Errorf("SecureSourceManagerRepositoryRef not initialized from `NewSecureSourceManagerRepositoryRef` or `NormalizedExternal`")
 }
 
+func (r *SecureSourceManagerRepositoryRef) ResourceID() (string, error) {
+	if r.External == "" {
+		return "", fmt.Errorf("reference has not been normalized (external is empty)")
+	}
+
+	_, resourceID, err := parseSecureSourceManagerRepositoryExternal(r.External)
+	if err != nil {
+		return "", err
+	}
+	return resourceID, nil
+}
+
 type SecureSourceManagerRepositoryParent struct {
 	ProjectID string
 	Location  string
@@ -167,7 +179,7 @@ func asSecureSourceManagerRepositoryExternal(parent *SecureSourceManagerReposito
 func parseSecureSourceManagerRepositoryExternal(external string) (parent *SecureSourceManagerRepositoryParent, resourceID string, err error) {
 	external = strings.TrimPrefix(external, "/")
 	tokens := strings.Split(external, "/")
-	if len(tokens) != 6 || tokens[0] != "projects" || tokens[2] != "locations" || tokens[4] != "repository" {
+	if len(tokens) != 6 || tokens[0] != "projects" || tokens[2] != "locations" || tokens[4] != "repositories" {
 		return nil, "", fmt.Errorf("format of SecureSourceManagerRepository external=%q was not known (use projects/<projectId>/locations/<location>/repositories/<repositoryID>)", external)
 	}
 	parent = &SecureSourceManagerRepositoryParent{
