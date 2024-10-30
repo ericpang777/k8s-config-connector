@@ -33,7 +33,7 @@ var _ refsv1beta1.ExternalNormalizer = &SecureSourceManagerRepositoryRef{}
 // holds the GCP identifier for the KRM object.
 type SecureSourceManagerRepositoryRef struct {
 	// A reference to an externally managed SecureSourceManagerRepository resource.
-	// Should be in the format "projects/<projectID>/locations/<location>/repositorys/<repositoryID>".
+	// Should be in the format "projects/<projectID>/locations/<location>/repositories/<repositoryID>".
 	External string `json:"external,omitempty"`
 
 	// The name of a SecureSourceManagerRepository resource.
@@ -161,14 +161,14 @@ func (p *SecureSourceManagerRepositoryParent) String() string {
 }
 
 func asSecureSourceManagerRepositoryExternal(parent *SecureSourceManagerRepositoryParent, resourceID string) (external string) {
-	return parent.String() + "/repositorys/" + resourceID
+	return parent.String() + "/repositories/" + resourceID
 }
 
 func parseSecureSourceManagerRepositoryExternal(external string) (parent *SecureSourceManagerRepositoryParent, resourceID string, err error) {
 	external = strings.TrimPrefix(external, "/")
 	tokens := strings.Split(external, "/")
 	if len(tokens) != 6 || tokens[0] != "projects" || tokens[2] != "locations" || tokens[4] != "repository" {
-		return nil, "", fmt.Errorf("format of SecureSourceManagerRepository external=%q was not known (use projects/<projectId>/locations/<location>/repositorys/<repositoryID>)", external)
+		return nil, "", fmt.Errorf("format of SecureSourceManagerRepository external=%q was not known (use projects/<projectId>/locations/<location>/repositories/<repositoryID>)", external)
 	}
 	parent = &SecureSourceManagerRepositoryParent{
 		ProjectID: tokens[1],
