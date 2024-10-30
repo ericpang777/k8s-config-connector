@@ -181,8 +181,11 @@ func (a *SecureSourceManagerRepositoryAdapter) Export(ctx context.Context) (*uns
 	if mapCtx.Err() != nil {
 		return nil, mapCtx.Err()
 	}
-	// TODO(user): Update other resource reference
 	parent, err := a.id.Parent()
+	if err != nil {
+		return nil, err
+	}
+	repositoryID, err := a.id.ResourceID()
 	if err != nil {
 		return nil, err
 	}
@@ -192,6 +195,8 @@ func (a *SecureSourceManagerRepositoryAdapter) Export(ctx context.Context) (*uns
 	if err != nil {
 		return nil, err
 	}
+	u.SetName(repositoryID)
+	u.SetGroupVersionKind(krm.SecureSourceManagerRepositoryGVK)
 	u.Object = uObj
 	return u, nil
 }
