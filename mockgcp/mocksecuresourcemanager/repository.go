@@ -67,7 +67,7 @@ func (s *secureSourceManagerServer) CreateRepository(ctx context.Context, req *p
 	obj.CreateTime = timestamppb.New(now)
 	obj.UpdateTime = timestamppb.New(now)
 
-	instanceName, err := s.parseInstanceName(req.GetRepository().GetInstance())
+	instanceName, err := s.parseInstanceName(obj.GetInstance())
 	if err != nil {
 		return nil, err
 	}
@@ -158,7 +158,6 @@ func (s *MockService) parseRepositoryName(name string) (*RepositoryName, error) 
 			Location:     tokens[3],
 			RepositoryID: tokens[5],
 		}
-
 		return name, nil
 	} else {
 		return nil, status.Errorf(codes.InvalidArgument, "name %q is not valid", name)

@@ -15,7 +15,7 @@
 apiVersion: securesourcemanager.cnrm.cloud.google.com/v1alpha1
 kind: SecureSourceManagerInstance
 metadata:
-  name: ssminstance-${uniqueId}
+  name: ssminstance-dep-${uniqueId}
 spec:
   location: us-central1
   projectRef:
