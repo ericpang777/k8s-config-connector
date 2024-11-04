@@ -260,7 +260,7 @@ func ResolveSecureSourceManagerInstanceRef(ctx context.Context, reader client.Re
 
 	resourceID, _, err := unstructured.NestedString(ssminstance.Object, "spec", "resourceID")
 	if err != nil {
-		return nil, fmt.Errorf("reading spec.resourceID from SecureSourceManagerInstance %s/%s: %w", sqlinstance.GetNamespace(), sqlinstance.GetName(), err)
+		return nil, fmt.Errorf("reading spec.resourceID from SecureSourceManagerInstance %s/%s: %w", ssminstance.GetNamespace(), ssminstance.GetName(), err)
 	}
 	if resourceID == "" {
 		resourceID = ssminstance.GetName()
@@ -268,7 +268,7 @@ func ResolveSecureSourceManagerInstanceRef(ctx context.Context, reader client.Re
 
 	location, _, err := unstructured.NestedString(ssminstance.Object, "spec", "location")
 	if err != nil {
-		return nil, fmt.Errorf("reading spec.location from SecureSourceManagerInstance %s/%s: %w", sqlinstance.GetNamespace(), sqlinstance.GetName(), err)
+		return nil, fmt.Errorf("reading spec.location from SecureSourceManagerInstance %s/%s: %w", ssminstance.GetNamespace(), ssminstance.GetName(), err)
 	}
 
 	projectID, err := refsv1beta1.ResolveProjectID(ctx, reader, ssminstance)
