@@ -49,10 +49,11 @@ func Instance_PrivateConfig_FromProto(mapCtx *direct.MapContext, in *pb.Instance
 	}
 	out := &krm.Instance_PrivateConfig{}
 	out.IsPrivate = direct.LazyPtr(in.GetIsPrivate())
-	out.CaPool = direct.LazyPtr(in.GetCaPool())
+	if in.GetCaPool() != "" {
+		out.CaPoolRef = &refs.PrivateCACAPoolRef{External: in.GetCaPool()}
+	}
 	out.HTTPServiceAttachment = direct.LazyPtr(in.GetHttpServiceAttachment())
 	out.SSHServiceAttachment = direct.LazyPtr(in.GetSshServiceAttachment())
-	// MISSING: PscAllowedProjects
 	return out
 }
 func Instance_PrivateConfig_ToProto(mapCtx *direct.MapContext, in *krm.Instance_PrivateConfig) *pb.Instance_PrivateConfig {
@@ -61,10 +62,11 @@ func Instance_PrivateConfig_ToProto(mapCtx *direct.MapContext, in *krm.Instance_
 	}
 	out := &pb.Instance_PrivateConfig{}
 	out.IsPrivate = direct.ValueOf(in.IsPrivate)
-	out.CaPool = direct.ValueOf(in.CaPool)
+	if in.CaPoolRef != nil {
+		out.CaPool = in.CaPoolRef.External
+	}
 	out.HttpServiceAttachment = direct.ValueOf(in.HTTPServiceAttachment)
 	out.SshServiceAttachment = direct.ValueOf(in.SSHServiceAttachment)
-	// MISSING: PscAllowedProjects
 	return out
 }
 func Repository_InitialConfig_FromProto(mapCtx *direct.MapContext, in *pb.Repository_InitialConfig) *krm.Repository_InitialConfig {
@@ -118,7 +120,6 @@ func SecureSourceManagerInstanceObservedState_FromProto(mapCtx *direct.MapContex
 	// MISSING: CreateTime
 	// MISSING: UpdateTime
 	// MISSING: Labels
-	// MISSING: PrivateConfig
 	out.State = direct.Enum_FromProto(mapCtx, in.GetState())
 	out.StateNote = direct.Enum_FromProto(mapCtx, in.GetStateNote())
 	out.HostConfig = Instance_HostConfig_FromProto(mapCtx, in.GetHostConfig())
@@ -133,7 +134,6 @@ func SecureSourceManagerInstanceObservedState_ToProto(mapCtx *direct.MapContext,
 	// MISSING: CreateTime
 	// MISSING: UpdateTime
 	// MISSING: Labels
-	// MISSING: PrivateConfig
 	out.State = direct.Enum_ToProto[pb.Instance_State](mapCtx, in.State)
 	out.StateNote = direct.Enum_ToProto[pb.Instance_StateNote](mapCtx, in.StateNote)
 	out.HostConfig = Instance_HostConfig_ToProto(mapCtx, in.HostConfig)
@@ -148,7 +148,7 @@ func SecureSourceManagerInstanceSpec_FromProto(mapCtx *direct.MapContext, in *pb
 	// MISSING: CreateTime
 	// MISSING: UpdateTime
 	// MISSING: Labels
-	// MISSING: PrivateConfig
+	out.PrivateConfig = Instance_PrivateConfig_FromProto(mapCtx, in.GetPrivateConfig())
 	if in.GetKmsKey() != "" {
 		out.KmsKeyRef = &refs.KMSCryptoKeyRef{External: in.GetKmsKey()}
 	}
@@ -163,7 +163,7 @@ func SecureSourceManagerInstanceSpec_ToProto(mapCtx *direct.MapContext, in *krm.
 	// MISSING: CreateTime
 	// MISSING: UpdateTime
 	// MISSING: Labels
-	// MISSING: PrivateConfig
+	out.PrivateConfig = Instance_PrivateConfig_ToProto(mapCtx, in.PrivateConfig)
 	if in.KmsKeyRef != nil {
 		out.KmsKey = in.KmsKeyRef.External
 	}
@@ -177,7 +177,7 @@ func SecureSourceManagerRepositorySpec_FromProto(mapCtx *direct.MapContext, in *
 	// MISSING: Name
 	// MISSING: Description
 	if in.GetInstance() != "" {
-		out.InstanceRef = &krm.SecureSourceManagerInstanceRef{External: in.GetInstance()}
+		out.InstanceRef = SecureSourceManagerRepositorySpec_InstanceRef_FromProto(mapCtx, in.GetInstance())
 	}
 	// MISSING: Uid
 	// MISSING: CreateTime

@@ -1,0 +1,119 @@
+apiVersion: privateca.cnrm.cloud.google.com/v1beta1
+kind: PrivateCACertificateAuthority
+metadata:
+  annotations:
+    cnrm.cloud.google.com/management-conflict-prevention-policy: none
+    cnrm.cloud.google.com/state-into-spec: absent
+  finalizers:
+  - cnrm.cloud.google.com/finalizer
+  - cnrm.cloud.google.com/deletion-defender
+  generation: 2
+  labels:
+    cnrm-test: "true"
+    label-one: value-one
+    label-two: value-two
+  name: privatecacertificateauthority-${uniqueId}
+  namespace: ${uniqueId}
+spec:
+  caPoolRef:
+    name: privatecacapool-${uniqueId}
+  config:
+    subjectConfig:
+      subject:
+        commonName: my-certificate-authority
+        organization: Example
+      subjectAltName:
+        dnsNames:
+        - example.com
+    x509Config:
+      caOptions:
+        isCa: true
+      keyUsage:
+        baseKeyUsage:
+          certSign: true
+          crlSign: true
+        extendedKeyUsage:
+          serverAuth: true
+  keySpec:
+    algorithm: RSA_PKCS1_4096_SHA256
+  lifetime: 86400s
+  location: us-central1
+  projectRef:
+    external: projects/${projectId}
+  resourceID: privatecacertificateauthority-${uniqueId}
+  type: SELF_SIGNED
+status:
+  caCertificateDescriptions:
+  - authorityKeyId:
+      keyId: c201ceac97ba988a2e1fe3a046d888377dc6ec73
+    certFingerprint:
+      sha256Hash: d473ab61b40db8110c4e48b68c75620fa1e81ad3c4971daf60d986176e8ee04c
+    publicKey:
+      key: LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQ0lqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FnOEFNSUlDQ2dLQ0FnRUFsd2g2bCt4V0pDNVhnUXZ6WHdDdQpNZDdGNUI0V1FNdzg0TkRjU1BSL1RkOUJQb09sQ2JGRmF5Sng5bFNBekk5cUttWm9iWXR4RlY3MXh3ejkvTDFrCndHQ3ltdFdPUm5nNW9kd0h3QTZXRU9tQUtSTEUwVjFuNjlBTFhzK0p0dEFYV0dYLzQyTGFxSm5VeENRTlp6amEKUlFzbmViTnRxYVdra1JaZXNhRlVWVDVWUFZlMUlGSjRiZXE2algxOEhRWnR2bWVuVU95MDVMY3F1anFDemdkMAowQWwveWx5bEZnNmNoUnNqdFVsSEtPcWJPRGEzdUlPeTV4YS9oaFJmb0pFRDlOVmZNR0NtbVRxcGQ0c2F2YitHCk5yZ0p3YWlsRXpnWGJEMmdzWEY3d3V1UkdobUtTUDBBTVZnL2ZTa2lWNWV0eUhaYmdjV2tBODFCY3YvZld0d2sKNmMrcHJtQVc1YnpWMlhaR2NiNVdFYU1aSWQvSjNmUFNwQkYzZWJjTW1mM21EdTAwdFdXTERoR1IxK2kwSmI2MQptMlBza0c0WU9DTCtpV1g1Q1IwTGlzRDZ6bUFXTUVVbmNHYTd2Z0pZa1NWc2tJbWtOM2JBS0xvNDc5Vi9EUXZPCnYyTnVUNUFGS2w2QVJoS0V2V3c5dVB1clZIODh4VjF5ZkVpSlNmdkdmbVJIcXBZMXpIUElnaTJ3Rk9iam5udEMKbWFFc1hheFhBVXpYRWs5dFRJdGt2V0VVaTFXT0k3N0FnTExXS2JxQTY4WWlCbUxZMWdoY0N0eklZL1NJWnZRWAo0N0V1MVdJREI3cm5ab2hId2d2ZFRuQnpUOG90SVRsYnNGck5aQ21lZGxBUnh5WFMxenVmL2JEaSszaDY2YnA0Cm9JK1lZazRyMllrSElvN1hOd3BBUk4wQ0F3RUFBUT09Ci0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+    subjectDescription:
+      hexSerialNumber: 004c5443f372c558a37073a227928a719450eee9
+      lifetime: 86400s
+      notAfterTime: "2024-11-29T16:13:48.668797686Z"
+      notBeforeTime: "2024-11-28T16:13:49.668797686Z"
+      subject:
+        commonName: my-certificate-authority
+        organization: Example
+      subjectAltName:
+        dnsNames:
+        - example.com
+    subjectKeyId:
+      keyId: c201ceac97ba988a2e1fe3a046d888377dc6ec73
+    x509Description:
+      caOptions:
+        isCa: true
+      keyUsage:
+        baseKeyUsage:
+          certSign: true
+          crlSign: true
+        extendedKeyUsage:
+          serverAuth: true
+  conditions:
+  - lastTransitionTime: "1970-01-01T00:00:00Z"
+    message: The resource is up to date
+    reason: UpToDate
+    status: "True"
+    type: Ready
+  createTime: "1970-01-01T00:00:00Z"
+  observedGeneration: 2
+  pemCaCertificates:
+  - |
+    -----BEGIN CERTIFICATE-----
+    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
+    Lcd0OUmb7WHA56XsbyiF2hXwYtVEm6N8vwCvbek=
+    -----END CERTIFICATE-----
+  state: STAGED
+  tier: ENTERPRISE
+  updateTime: "1970-01-01T00:00:00Z"
