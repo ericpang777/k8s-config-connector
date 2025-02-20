@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,18 +16,51 @@ package v1alpha1
 
 // +kcc:proto=google.cloud.securesourcemanager.v1.Instance.HostConfig
 type Instance_HostConfig struct {
+}
+
+// +kcc:proto=google.cloud.securesourcemanager.v1.Instance.PrivateConfig
+type Instance_PrivateConfig struct {
+	// Required. Immutable. Indicate if it's private instance.
+	// +kcc:proto:field=google.cloud.securesourcemanager.v1.Instance.PrivateConfig.is_private
+	IsPrivate *bool `json:"isPrivate,omitempty"`
+
+	// Required. Immutable. CA pool resource, resource must in the format of
+	//  `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+	// +kcc:proto:field=google.cloud.securesourcemanager.v1.Instance.PrivateConfig.ca_pool
+	CaPool *string `json:"caPool,omitempty"`
+}
+
+// +kcc:proto=google.cloud.securesourcemanager.v1.Instance.HostConfig
+type Instance_HostConfigObservedState struct {
 	// Output only. HTML hostname.
+	// +kcc:proto:field=google.cloud.securesourcemanager.v1.Instance.HostConfig.html
 	HTML *string `json:"html,omitempty"`
 
 	// Output only. API hostname. This is the hostname to use for **Host: Data
 	//  Plane** endpoints.
+	// +kcc:proto:field=google.cloud.securesourcemanager.v1.Instance.HostConfig.api
 	Api *string `json:"api,omitempty"`
 
 	// Output only. Git HTTP hostname.
+	// +kcc:proto:field=google.cloud.securesourcemanager.v1.Instance.HostConfig.git_http
 	GitHTTP *string `json:"gitHTTP,omitempty"`
 
 	// Output only. Git SSH hostname.
+	// +kcc:proto:field=google.cloud.securesourcemanager.v1.Instance.HostConfig.git_ssh
 	GitSSH *string `json:"gitSSH,omitempty"`
+}
+
+// +kcc:proto=google.cloud.securesourcemanager.v1.Instance.PrivateConfig
+type Instance_PrivateConfigObservedState struct {
+	// Output only. Service Attachment for HTTP, resource is in the format of
+	//  `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+	// +kcc:proto:field=google.cloud.securesourcemanager.v1.Instance.PrivateConfig.http_service_attachment
+	HTTPServiceAttachment *string `json:"httpServiceAttachment,omitempty"`
+
+	// Output only. Service Attachment for SSH, resource is in the format of
+	//  `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+	// +kcc:proto:field=google.cloud.securesourcemanager.v1.Instance.PrivateConfig.ssh_service_attachment
+	SSHServiceAttachment *string `json:"sshServiceAttachment,omitempty"`
 }
 
 // +kcc:proto=google.cloud.securesourcemanager.v1.Repository
