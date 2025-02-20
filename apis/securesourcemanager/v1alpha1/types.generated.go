@@ -18,18 +18,6 @@ package v1alpha1
 type Instance_HostConfig struct {
 }
 
-// +kcc:proto=google.cloud.securesourcemanager.v1.Instance.PrivateConfig
-type Instance_PrivateConfig struct {
-	// Required. Immutable. Indicate if it's private instance.
-	// +kcc:proto:field=google.cloud.securesourcemanager.v1.Instance.PrivateConfig.is_private
-	IsPrivate *bool `json:"isPrivate,omitempty"`
-
-	// Required. Immutable. CA pool resource, resource must in the format of
-	//  `projects/{project}/locations/{location}/caPools/{ca_pool}`.
-	// +kcc:proto:field=google.cloud.securesourcemanager.v1.Instance.PrivateConfig.ca_pool
-	CaPool *string `json:"caPool,omitempty"`
-}
-
 // +kcc:proto=google.cloud.securesourcemanager.v1.Instance.HostConfig
 type Instance_HostConfigObservedState struct {
 	// Output only. HTML hostname.
