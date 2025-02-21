@@ -74,6 +74,7 @@ func Instance_PrivateConfig_FromProto(mapCtx *direct.MapContext, in *pb.Instance
 	if in.GetCaPool() != "" {
 		out.CaPoolRef = &refs.PrivateCACAPoolRef{External: in.GetCaPool()}
 	}
+	// MISSING: PscAllowedProjects
 	return out
 }
 func Instance_PrivateConfig_ToProto(mapCtx *direct.MapContext, in *krm.Instance_PrivateConfig) *pb.Instance_PrivateConfig {
@@ -85,6 +86,7 @@ func Instance_PrivateConfig_ToProto(mapCtx *direct.MapContext, in *krm.Instance_
 	if in.CaPoolRef != nil {
 		out.CaPool = in.CaPoolRef.External
 	}
+	// MISSING: PscAllowedProjects
 	return out
 }
 func Instance_PrivateConfigObservedState_FromProto(mapCtx *direct.MapContext, in *pb.Instance_PrivateConfig) *krm.Instance_PrivateConfigObservedState {
@@ -94,6 +96,7 @@ func Instance_PrivateConfigObservedState_FromProto(mapCtx *direct.MapContext, in
 	out := &krm.Instance_PrivateConfigObservedState{}
 	out.HTTPServiceAttachment = direct.LazyPtr(in.GetHttpServiceAttachment())
 	out.SSHServiceAttachment = direct.LazyPtr(in.GetSshServiceAttachment())
+	// MISSING: PscAllowedProjects
 	return out
 }
 func Instance_PrivateConfigObservedState_ToProto(mapCtx *direct.MapContext, in *krm.Instance_PrivateConfigObservedState) *pb.Instance_PrivateConfig {
@@ -103,6 +106,7 @@ func Instance_PrivateConfigObservedState_ToProto(mapCtx *direct.MapContext, in *
 	out := &pb.Instance_PrivateConfig{}
 	out.HttpServiceAttachment = direct.ValueOf(in.HTTPServiceAttachment)
 	out.SshServiceAttachment = direct.ValueOf(in.SSHServiceAttachment)
+	// MISSING: PscAllowedProjects
 	return out
 }
 func Repository_InitialConfig_FromProto(mapCtx *direct.MapContext, in *pb.Repository_InitialConfig) *krm.Repository_InitialConfig {
@@ -132,12 +136,26 @@ func Repository_URIs_FromProto(mapCtx *direct.MapContext, in *pb.Repository_URIs
 		return nil
 	}
 	out := &krm.Repository_URIs{}
+	return out
+}
+func Repository_URIs_ToProto(mapCtx *direct.MapContext, in *krm.Repository_URIs) *pb.Repository_URIs {
+	if in == nil {
+		return nil
+	}
+	out := &pb.Repository_URIs{}
+	return out
+}
+func Repository_URIsObservedState_FromProto(mapCtx *direct.MapContext, in *pb.Repository_URIs) *krm.Repository_URIsObservedState {
+	if in == nil {
+		return nil
+	}
+	out := &krm.Repository_URIsObservedState{}
 	out.HTML = direct.LazyPtr(in.GetHtml())
 	out.GitHTTPS = direct.LazyPtr(in.GetGitHttps())
 	out.Api = direct.LazyPtr(in.GetApi())
 	return out
 }
-func Repository_URIs_ToProto(mapCtx *direct.MapContext, in *krm.Repository_URIs) *pb.Repository_URIs {
+func Repository_URIsObservedState_ToProto(mapCtx *direct.MapContext, in *krm.Repository_URIsObservedState) *pb.Repository_URIs {
 	if in == nil {
 		return nil
 	}
